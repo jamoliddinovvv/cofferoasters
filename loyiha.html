@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | coffeeroasters</title>
+    <style>
+        :root {
+            --bg-beige: #f8f1e9;
+            --dark-gray: #2c2c2c;
+            --accent-green: #4a7043;
+            --light-beige: #e8d9c2;
+            --text-light: #f5f0e8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--bg-beige);
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(44, 44, 44, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.25rem 0;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('/imge/Bitmap.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 620px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 1.25rem;
+            letter-spacing: -2px;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 480px;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+        
+        /* COMMITMENT SECTION */
+        .commitment {
+            padding: 140px 0 100px;
+            background: var(--bg-beige);
+            position: relative;
+        }
+        
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+        
+        .commitment-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+        }
+        
+        .commitment-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        
+        .commitment-image:hover img {
+            transform: scale(1.04);
+        }
+        
+        .floating-avatar {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid white;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.15);
+            z-index: 2;
+        }
+        
+        .floating-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .commitment-content h2 {
+            font-size: 2.75rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .commitment-content p {
+            font-size: 1.15rem;
+            color: #555;
+            max-width: 460px;
+        }
+        
+        /* QUALITY SECTION */
+        .quality {
+            padding: 120px 0;
+            background: var(--dark-gray);
+            color: white;
+        }
+        
+        .quality-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            background: rgba(255,255,255,0.06);
+            border-radius: 32px;
+            padding: 5rem 6rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .quality-text h2 {
+            font-size: 2.75rem;
+            line-height: 1.1;
+            margin-bottom: 1.75rem;
+        }
+        
+        .quality-text p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            max-width: 420px;
+        }
+        
+        .quality-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        
+        .quality-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .quality-floating {
+            position: absolute;
+            top: -60px;
+            left: -50px;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 6px solid white;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+        
+        /* HEADQUARTERS */
+        .headquarters {
+            padding: 120px 0;
+            background: var(--bg-beige);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            color: var(--dark-gray);
+        }
+        
+        .locations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .location-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+        
+        .location-icon {
+            width: 56px;
+            height: 56px;
+            
+            color: white;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+        
+        .location-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+        
+        .location-card p {
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--dark-gray);
+            color: var(--text-light);
+            padding: 5rem 0 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+        
+        .footer-left .logo {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .footer-left p {
+            max-width: 280px;
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            flex-direction: row;
+            gap: 1rem;
+        }
+        
+        .footer-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--accent-green);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-icons a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-green);
+        }
+        
+        .footer-bottom {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .commitment-grid,
+            .quality-card {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .quality-card {
+                padding: 3rem 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .locations {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .footer-bottom {
+                justify-content: center;
+            }
+        }
+        
+        /* Utility */
+        .section {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo"><div><img src="/imge/Group 5.png" alt=""></div></div></a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Create Your Plan</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>About Us</h1>
+                <p>We're passionate about sourcing the world's finest coffee beans and crafting exceptional experiences, one cup at a time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMITMENT SECTION -->
+    <section class="commitment section">
+        <div class="container">
+            <div class="commitment-grid">
+                <!-- Left: Image -->
+                <div class="commitment-image">
+                    <img src="/imge/Bitmap (1).jpg" alt="Barista crafting coffee">
+                    <div class="floating-avatar">
+                        <img src="/imge/Bitmap.jpg" alt="Founder">
+                    </div>
+                </div>
+                
+                <!-- Right: Content -->
+                <div class="commitment-content">
+                    <h2>Our commitment</h2>
+                    <p>Since 2018, we've been dedicated to ethical sourcing, sustainable farming practices, and delivering the highest quality coffee directly from farmers to your cup.</p>
+                    <p>Every bean we roast tells a story — of dedicated growers, rich soil, and perfect growing conditions. We believe great coffee connects people and cultures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUALITY SECTION -->
+    <section class="quality section">
+        <div class="container">
+            <div class="quality-card">
+                <!-- Left: Text -->
+                <div class="quality-text">
+                    <h2>Uncompromising quality</h2>
+                    <p>We personally visit farms, taste every harvest, and work directly with producers who share our values. From single-origin beans to our signature blends, every batch is roasted with precision and care in our small-batch facility.</p>
+                </div>
+                
+                <!-- Right: Image -->
+                <div class="quality-image">
+                    <img src="/imge/Bitmap (2).jpg" alt="Pour over coffee">
+                    <div class="quality-floating">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HEADQUARTERS -->
+    <section class="headquarters section">
+        <div class="container">
+            <h2 class="section-title">Our headquarters</h2>
+            
+            <div class="locations">
+                <!-- UK -->
+                <div class="location-card">
+                    <div class="location-icon"><img src="/imge/1.jpg" alt=""></div>
+                    <h3>United Kingdom</h3>
+                    <p>12 Clerkenwell Green</p>
+                    <p>London, EC1R 0DP</p>
+                    <p>+44 20 7946 0958</p>
+                </div>
+                
+                <!-- Canada -->
+                <div class="location-card">
+                    <div class="location-icon"><img src="/imge/2.jpg" alt=""></div>
+                    <h3>Canada</h3>
+                    <p>388 Richmond Street West</p>
+                    <p>Toronto, ON M5V 2P8</p>
+                    <p>+1 (416) 555-0192</p>
+                </div>
+                
+                <!-- Australia -->
+                <div class="location-card">
+                    <div class="location-icon"><img src="/imge/3.jpg" alt=""></div>
+                    <h3>Australia</h3>
+                    <p>45 Fitzroy Street</p>
+                    <p>Surry Hills, NSW 2010</p>
+                    <p>+61 2 9876 5432</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Left -->
+                <div class="footer-left">
+                    <a href="#" class="logo">coffeeroasters</a>
+                    <p>Handcrafted specialty coffee delivered with passion and purpose.</p>
+                </div>
+                
+                <!-- Center Navigation -->
+                <div class="footer-nav">
+                    <a href="#">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Create Your Plan</a>
+                    <a href="#">Shop</a>
+                    <a href="#">Blog</a>
+                </div>
+                
+                <!-- Right Social -->
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><img src="/imge/f1.png" alt=""></a>
+                    <a href="#" aria-label="Facebook"><img src="/imge/f2.png" alt=""></a>
+                    <a href="#" aria-label="Twitter"><img src="/imge/f3.png" alt=""></a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
